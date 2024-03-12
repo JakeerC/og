@@ -84,46 +84,64 @@ export default function BuildPage() {
                       <option value='gradient'>gradient</option>
                       <option value='article'>article</option>
                     </SelectInput>
-                    <SelectInput
-                      id='articleType'
-                      label='articleType'
-                      helperText='article type '
-                    >
-                      <option value='blog'>blog</option>
-                      <option value='projects'>projects</option>
-                      <option value='snippets'>snippets</option>
-                    </SelectInput>
-                    <Input id='siteName' label='siteName' />
-                    <Input id='description' label='description' />
-                    <Input
-                      id='templateTitle'
-                      label='templateTitle'
-                      helperText='Adding templateTitle will change layout'
-                    />
-                    <Input
-                      id='logo'
-                      label='Logo Links'
-                      helperText={`default: ${deploymentURL}/images/logo.png`}
-                    />
-                    <Input
-                      id='banner'
-                      label='Banner Links'
-                      helperText='This is only for /blog'
-                    />
-                    <div className='flex gap-2'>
-                      <Input
-                        className='w-full'
-                        id='logoWidth'
-                        label='logoWidth'
-                        helperText='default: 100'
-                      />
-                      <Input
-                        className='w-full'
-                        id='logoHeight'
-                        label='logoHeight'
-                        helperText='default: auto'
-                      />
-                    </div>
+                    {formData?.ogType === 'article' ? (
+                      <>
+                        {/* //#region //*=========== article fields =========== */}
+                        <SelectInput
+                          id='articleType'
+                          label='articleType'
+                          helperText='article type '
+                        >
+                          <option value='blog'>blog</option>
+                          <option value='projects'>projects</option>
+                          <option value='snippets'>snippets</option>
+                        </SelectInput>
+                        <Input
+                          id='templateTitle'
+                          label='templateTitle'
+                          helperText='Adding templateTitle will change layout'
+                        />
+                        <Input
+                          id='banner'
+                          label='Banner Links'
+                          helperText='This is only for /blog'
+                        />
+                        {/* //#endregion //*======== article fields =========== */}
+                      </>
+                    ) : (
+                      <>
+                        <Input
+                          id='siteName'
+                          label='siteName'
+                          helperText='required field ,siteName / page name'
+                        />
+                        <Input
+                          id='description'
+                          label='description'
+                          helperText='required field, description of page or site'
+                        />
+                        <Input
+                          id='logo'
+                          label='Logo Links'
+                          helperText={`default: ${deploymentURL}/images/logo.png`}
+                        />
+                        <div className='flex gap-2'>
+                          <Input
+                            className='w-full'
+                            id='logoWidth'
+                            label='logoWidth'
+                            helperText='default: 160'
+                          />
+                          <Input
+                            className='w-full'
+                            id='logoHeight'
+                            label='logoHeight'
+                            helperText='default: auto'
+                          />
+                        </div>
+                      </>
+                    )}
+
                     <SelectInput id='theme' label='theme'>
                       <option value='dark'>dark</option>
                       <option value='light'>light</option>
