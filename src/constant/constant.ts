@@ -8,3 +8,5 @@ export const github = 'https://github.com/jakeerc';
 export const twitterId = '@jakeerchilakala';
 export const cloudinaryPersonalLogo =
   'https://res.cloudinary.com/jakeer-cloudinary/image/upload/q_auto,f_auto,w_256/personal/logo_round';
+
+export const article = 'article';

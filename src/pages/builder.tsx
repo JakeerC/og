@@ -8,6 +8,7 @@ import Input from '@/components/forms/Input';
 import SelectInput from '@/components/forms/SelectInput';
 import Seo from '@/components/Seo';
 
+import { article } from '@/constant/constant';
 import { deploymentURL } from '@/constant/env';
 
 const queryKeys = [
@@ -42,6 +43,7 @@ export default function BuildPage() {
   const formData = watch();
   React.useEffect(() => {
     const { ogType, ...rest } = formData;
+    ogType !== article && delete rest.articleType;
     const qurl = queryString.stringifyUrl(
       {
         url: `${deploymentURL}/api/${ogType}`,
@@ -82,9 +84,9 @@ export default function BuildPage() {
                     >
                       <option value='general'>general</option>
                       <option value='gradient'>gradient</option>
-                      <option value='article'>article</option>
+                      <option value={article}>article</option>
                     </SelectInput>
-                    {formData?.ogType === 'article' ? (
+                    {formData?.ogType === article ? (
                       <>
                         {/* //#region //*=========== article fields =========== */}
                         <SelectInput
